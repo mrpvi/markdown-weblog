@@ -1,0 +1,38 @@
+.post {
+  margin-bottom: 52px;
+
+  h1{
+    color: #424242;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .discription {
+    color: #424242;
+    font-size: 14px;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    // border: 1px dashed #424242;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 4px;
+
+    .tags {
+      display: flex;
+      gap: 8px;
+
+      a {
+        background: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+    }
+  }
+}
