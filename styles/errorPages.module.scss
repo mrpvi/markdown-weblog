@@ -1,0 +1,21 @@
+.notFountPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        color: #424242;
+        direction: ltr;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+@media (min-width: 450px) {
+    .notFountPage img {
+        width: unset;
+    }
+}
