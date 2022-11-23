@@ -62,7 +62,7 @@ const singlePost = ({ frontMatter, content }) => {
                     </div>
                 </div>
             </div>
-            <img src="/s.jpg" alt="" className={style.postImage}/>
+            <img src={frontMatter.image} alt="" className={style.postImage}/>
             <div className="container">
                 <div className={style.content}>
                     <span
