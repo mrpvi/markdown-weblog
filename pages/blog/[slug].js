@@ -2,6 +2,7 @@ import style from '../../styles/singlePost.module.scss';
 import fs from 'fs';
 import md from 'markdown-it';
 import matter from 'gray-matter';
+import MarkdownIt from 'markdown-it';
 
 export async function getStaticPaths ( ) {
     const files = fs.readdirSync("posts")
@@ -31,25 +32,33 @@ export async function getStaticProps({ params: {slug} }) {
     }
 }
 
-// function createMarkup() {
-//     return {__html: };
-// }
+function createMarkup(content) {
+    let md = new MarkdownIt();
+    let result = md.render(content);
+
+    return result;
+}
 
 const singlePost = ({ frontMatter, content }) => {
+    const htmlContent = createMarkup(content);
 
-    console.log(frontMatter, content);
     return (
         <div className={style.singlePost}>
             <div className="container">
                 <h1 className={style.title}>{ frontMatter.title }</h1>
                 <div className={style.info}>
                     <div className={style.date}>
-                        ۲ مهر ۱۴۰۱
+                        { frontMatter.publicationDate }
                     </div>
                     <div className={style.tags}>
-                        <span className={style.tag}>تگ اول</span>
-                        <span className={style.tag}>تگ دوم</span>
-                        <span className={style.tag}>تگ سوم</span>
+                        {frontMatter.tags.map((tag, index) => (
+                            <span
+                                className={style.tag}
+                                key={index}
+                            >
+                                { tag }
+                            </span>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -58,8 +67,8 @@ const singlePost = ({ frontMatter, content }) => {
                 <div className={style.content}>
                     <span
                         className={style.text}
-                        dangerouslySetInnerHTML={ { __html: content } }
-                    />
+                        dangerouslySetInnerHTML={{ __html: htmlContent }}
+                    ></span>
                </div>
             </div>
         </div>
