@@ -1,7 +1,26 @@
-import styles from '../styles/Home.module.scss'
 import fs from 'fs';
 import matter from 'gray-matter';
 import Link from 'next/link';
+import PostCard from '../Components/PostCard';
+
+export default function Home({ posts }) {
+  return (
+    <div>
+      <div className="container">
+
+        {posts?.map(post =>
+
+          <PostCard
+            post={post}
+            key={post.slug}
+          />
+
+        )}
+
+      </div>
+    </div>
+  )
+}
 
 export async function getStaticProps() {
   const files = fs.readdirSync("posts")
@@ -23,39 +42,4 @@ export async function getStaticProps() {
     }
   }
 
-}
-
-export default function Home({ posts }) {
-  return (
-    <div className={styles.home}>
-      <div className="container">
-
-        {posts?.map(post => {
-          return (
-            <div className={styles.post} key={`${post.slug}`}>
-                <Link className={styles.link} href={ `/blog/${post.slug}` }>
-                  <h1>{ post.frotMatter.title }</h1>
-                </Link>
-
-                <div className={styles.info}>
-                  <div className={styles.date}>
-                    ۲ مهر ۱۴۰۱
-                  </div>
-                  <div className={styles.tags}>
-                    <a href="#">تگ اول</a>
-                    <a href="#">تگ دوم</a>
-                    <a href="#">تگ سوم</a>
-                  </div>
-                </div>
-
-                <span className={styles.discription}>
-                  { post.frotMatter.description }
-                </span>
-            </div>
-          )
-        })}
-
-      </div>
-    </div>
-  )
 }

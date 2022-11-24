@@ -3,6 +3,7 @@ import fs from 'fs';
 import md from 'markdown-it';
 import matter from 'gray-matter';
 import MarkdownIt from 'markdown-it';
+import Link from 'next/link';
 
 export async function getStaticPaths ( ) {
     const files = fs.readdirSync("posts")
@@ -51,14 +52,11 @@ const singlePost = ({ frontMatter, content }) => {
                         { frontMatter.publicationDate }
                     </div>
                     <div className={style.tags}>
-                        {frontMatter.tags.map((tag, index) => (
-                            <span
-                                className={style.tag}
-                                key={index}
-                            >
-                                { tag }
-                            </span>
-                        ))}
+                        {frontMatter.tags.map((tag, index) =>
+                            <Link href={`/blog/search-result?tags=${tag}`} key={index}>
+                                {tag}
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>
