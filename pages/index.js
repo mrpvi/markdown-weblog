@@ -2,11 +2,15 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import Link from 'next/link';
 import PostCard from '../Components/PostCard';
+import style from '../styles/Home.module.scss'
+import About from './about';
 
 export default function Home({ posts }) {
   return (
-    <div>
+    <div className={style.home}>
       <div className="container">
+
+        <About />
 
         {posts?.map(post =>
 

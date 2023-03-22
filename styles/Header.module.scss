@@ -9,7 +9,7 @@
     display: none;
     flex-direction: column;
     list-style: none;
-    gap: 16px;
+    gap: 24px;
     background: #f7f7f7;
     border-radius: 8px;
     padding: 18px 16px;
@@ -17,7 +17,6 @@
     position: absolute;
     right: 16px;
     margin-top: 16px;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
 
     &.active {
       display: flex;
@@ -27,7 +26,8 @@
     a {
       text-decoration: none;
       color: #424242;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 16px;
     }
   }
 }

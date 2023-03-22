@@ -1,4 +1,5 @@
 import style from '../../styles/singlePost.module.scss';
+import PostCardStyle from '../../styles/PostCard.module.scss';
 import fs from 'fs';
 import md from 'markdown-it';
 import matter from 'gray-matter';
@@ -47,18 +48,20 @@ const singlePost = ({ frontMatter, content }) => {
         <div className={style.singlePost}>
             <div className="container">
                 <h1 className={style.title}>{ frontMatter.title }</h1>
+
                 <div className={style.info}>
-                    <div className={style.date}>
-                        { frontMatter.publicationDate }
-                    </div>
                     <div className={style.tags}>
-                        {frontMatter.tags.map((tag, index) =>
-                            <Link href={`/blog/search-result?tags=${tag}`} key={index}>
+                        <div className={style.date}>
+                            { frontMatter.publicationDate }
+                        </div>
+                        {frontMatter.tags.map( tag =>
+                                <Link href={`/blog/search-result?tags=${tag}`} key={tag}>
                                 {tag}
-                            </Link>
-                        )}
+                                </Link>
+                            )}
                     </div>
                 </div>
+
             </div>
             <img src={frontMatter.image} alt="" className={style.postImage}/>
             <div className="container">

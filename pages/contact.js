@@ -1,7 +1,7 @@
 const Contact = () => {
     return (
         <div className="container">
-            this is contact page
+            در دست احداث
         </div>
     );
 }

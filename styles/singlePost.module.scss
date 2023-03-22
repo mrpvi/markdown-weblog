@@ -17,23 +17,34 @@
     .info {
         display: flex;
         align-items: center;
-        gap: 16px;
-        flex-wrap: wrap;
-        margin-bottom: 32px;
-        width: -moz-fit-content;
-        width: fit-content;
-        padding: 4px 8px;
-        border-radius: 4px;
-    }
-    .tags {
-        display: flex;
         gap: 8px;
-    }
-    .tags a {
-        background: #fff;
-        padding: 4px 8px;
+        flex-wrap: wrap;
+        width: fit-content;
         border-radius: 4px;
+
+        .tags {
+          display: flex;
+          gap: 16px;
+          margin-bottom: 32px;
+
+          a {
+            background: #F9F5FF;
+            color: #6941C6;
+            border-radius: 14px;
+            padding: 2px 10px;
+            padding-top: 4px;
+            line-height: 24px;
+          }
+        }
+
+        .date {
+          color: #475467;
+          font-size: 16px;
+          font-weight: 400;
+          padding-top: 4px;
+        }
     }
+
     pre{
         display: block;
         padding: 3px 3px 2px;
